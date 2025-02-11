@@ -1,4 +1,4 @@
-let arr = [1, 2, 3, 4, 5];
+let arr = [1, 2, 3, 4, 5, 6, 7, 8];
 
 let n = arr.length;
 let sum = 0;
@@ -11,7 +11,12 @@ for (let i = 0; i < n; i++) {
     even += arr[i];
   }
 }
-
 console.log(`odd:${sum} even:${even}`);
+if (sum > even) {
+  console.log("Odd is greater");
+} else {
+  console.log("Even is greater");
+}
 
-// odd:4 even :6
+// odd:16 even :20
+// Even is greater
