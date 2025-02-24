@@ -1,19 +1,19 @@
 let Emoplyes = [];
 
 // All deleted function
-function handleAllDelted() {
+function AllDeltedEntry() {
   Emoplyes = [] = "";
-  uimaker();
+  EmoplyeMain();
 }
 
 // deleted function
-const handleDeleted = (index) => {
+const SingleEntry = (index) => {
   Emoplyes.splice(index, 1);
-  uimaker();
+  EmoplyeMain();
 };
 
 // make a function map useing
-const uimaker = () => {
+const EmoplyeMain = () => {
   EmoplyesList = document.getElementById("EmoplyesList").innerHTML = "";
   Emoplyes.map((ele, i) => {
     // add a table data
@@ -30,7 +30,7 @@ const uimaker = () => {
     let td6 = document.createElement("td");
     td6.innerHTML = ele.expersions;
     let td7 = document.createElement("td");
-    td7.innerHTML = ele.expersionsLevel;
+    td7.innerHTML = ele.expersionsLevels;
     let img = document.createElement("img");
     img.src = ele.img;
     let td8 = document.createElement("td");
@@ -41,17 +41,17 @@ const uimaker = () => {
     let td9 = document.createElement("td");
     td9.append(btn);
     // deleted anyway data buttons
-    btn.addEventListener("click", () => handleDeleted(i));
+    btn.addEventListener("click", () => SingleEntry(i));
     // add the row in table
     let tr = document.createElement("tr");
-    tr.append(td1, td2, td3, td4, td5, td6, td7, td8 ,td9);
+    tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9);
     // final output
     document.getElementById("EmoplyesList").append(tr);
   });
 };
 // input values
 document
-  .getElementById("EmpolyeTable")
+  .getElementById("EmpolyeDataEntry")
   .addEventListener("submit", function sell(e) {
     e.preventDefault();
     let name = document.getElementById("Name").value;
@@ -60,14 +60,14 @@ document
     let jobroll = document.getElementById("Job-Roll").value;
     let salary = document.getElementById("salary").value;
     let expersions = document.getElementById("expersions").value;
-    let expersionsLevel = "";
+    let expersionsLevels = "";
 
     if (expersions < 3) {
-      expersionsLevel = " junior";
-    } else if (expersions >= 2 && expersions < 5) {
-      expersionsLevel = "medium";
+      expersionsLevels = " Junior";
+    } else if (expersions >= 3 && expersions < 5) {
+      expersionsLevels = "Medium";
     } else {
-      expersionsLevel = "senior";
+      expersionsLevels = "Senior";
     }
 
     let img = document.getElementById("image").value;
@@ -84,15 +84,12 @@ document
       jobroll: jobroll,
       salary: salary,
       expersions: expersions,
-      expersionsLevel: expersionsLevel,
+      expersionsLevels: expersionsLevels,
       img: img,
     };
 
     Emoplyes.push(Emoplye);
-    // console.log(Emoplye);
 
     // call function
-    uimaker();
+    EmoplyeMain();
   });
-
-// document.getElementById("EmpolyeTable").addEventListener("submit", sell);
