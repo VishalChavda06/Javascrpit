@@ -17,6 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: 20px;
 }
 
 /* Input Fields */
@@ -49,31 +50,14 @@ select {
 
 /* Buttons */
 .btn {
-  padding: 10px;
-  font-size: 16px;
+  padding: 10px !important;
+  font-size: 18px !important;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   transition: 0.3s ease-in-out;
 }
 
-.btn-outline-success {
-  background: #28a745;
-  color: white;
-}
-
-.btn-outline-success:hover {
-  background: #218838;
-}
-
-.btn-outline-danger {
-  background: #dc3545;
-  color: white;
-}
-
-.btn-outline-danger:hover {
-  background: #c82333;
-}
 
 img{
     width: 50px;
