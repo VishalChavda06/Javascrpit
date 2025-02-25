@@ -50,46 +50,49 @@ const EmoplyeMain = () => {
   });
 };
 // input values
-document
-  .getElementById("EmpolyeDataEntry")
-  .addEventListener("submit", function sell(e) {
-    e.preventDefault();
-    let name = document.getElementById("Name").value;
-    let email = document.getElementById("email").value;
-    let number = document.getElementById("number").value;
-    let jobroll = document.getElementById("Job-Roll").value;
-    let salary = document.getElementById("salary").value;
-    let expersions = document.getElementById("expersions").value;
-    let expersionsLevels = "";
+// document
+//   .getElementById("EmpolyeDataEntry")
+//   .addEventListener("submit",
+const sell = (e) => {
+  e.preventDefault();
+  let name = document.getElementById("Name").value;
+  let email = document.getElementById("email").value;
+  let number = document.getElementById("number").value;
+  let jobroll = document.getElementById("Job-Roll").value;
+  let salary = document.getElementById("salary").value;
+  let expersions = document.getElementById("expersions").value;
+  // make a conditions juniar-Medium-Senior
+  let expersionsLevels = "";
+  if (expersions < 3) {
+    expersionsLevels = " Junior";
+  } else if (expersions >= 3 && expersions < 5) {
+    expersionsLevels = "Medium";
+  } else {
+    expersionsLevels = "Senior";
+  }
 
-    if (expersions < 3) {
-      expersionsLevels = " Junior";
-    } else if (expersions >= 3 && expersions < 5) {
-      expersionsLevels = "Medium";
-    } else {
-      expersionsLevels = "Senior";
-    }
+  let img = document.getElementById("image").value;
 
-    let img = document.getElementById("image").value;
+  // console.log(expersions);
+  // if (expersions > 1 && expersions < 3) {
+  //   console.log("juniar");
+  // }
+  // create a object
+  let Emoplye = {
+    name: name,
+    email: email,
+    number: number,
+    jobroll: jobroll,
+    salary: salary,
+    expersions: expersions,
+    expersionsLevels: expersionsLevels,
+    img: img,
+  };
 
-    console.log(expersions);
-    if (expersions > 1 && expersions < 3) {
-      console.log("juniar");
-    }
-    // create a object
-    let Emoplye = {
-      name: name,
-      email: email,
-      number: number,
-      jobroll: jobroll,
-      salary: salary,
-      expersions: expersions,
-      expersionsLevels: expersionsLevels,
-      img: img,
-    };
+  Emoplyes.push(Emoplye);
 
-    Emoplyes.push(Emoplye);
+  // call function
+  EmoplyeMain();
+};
 
-    // call function
-    EmoplyeMain();
-  });
+document.getElementById("EmpolyeDataEntry").addEventListener("submit", sell);
