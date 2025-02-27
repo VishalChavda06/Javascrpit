@@ -1,6 +1,6 @@
 let value = document.getElementById("count").innerHTML;
-let count = 0;  
 setTimeout(() => {
+  let count = 0;
   let counter = setInterval(() => {
     //   console.log(count++);
     count++;
@@ -14,19 +14,20 @@ setTimeout(() => {
 
 let value2 = document.getElementById("count2").innerHTML;
 setTimeout(() => {
+  let count = 0;
   let counter = setInterval(() => {
     //   console.log(count++);
     count++;
     document.getElementById("count2").innerHTML = count;
     if (count == value2) {
       // clearInterval(counter);
-      clearInterval(counter);
       count = 0;
     }
-  }, 100);
+  }, 200);
 }, 2000);
 let value3 = document.getElementById("count3").innerHTML;
 setTimeout(() => {
+  let count = 0;
   let counter = setInterval(() => {
     //   console.log(count++);
     count++;
@@ -39,6 +40,7 @@ setTimeout(() => {
 }, 2000);
 let value4 = document.getElementById("count4").innerHTML;
 setTimeout(() => {
+  let count = 0;
   let counter = setInterval(() => {
     //   console.log(count++);
     count++;
@@ -47,5 +49,5 @@ setTimeout(() => {
       // clearInterval(counter);
       count = 0;
     }
-  }, 100);
+  }, 10);
 }, 2000);
