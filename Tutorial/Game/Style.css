@@ -28,7 +28,7 @@ h3 {
 }
 
 .choice:hover {
-  transform: scale(1.1);
+  transform: scale(0.9);
   cursor: pointer;
 }
 
@@ -56,5 +56,70 @@ h3 {
   font-weight: 800;
   font-size: 1.5rem;
   border-radius: 8px;
-  cursor: pointer;
+  /* cursor: pointer; */
+}
+
+
+/* Media Query */
+
+@media screen and (max-width:320px) {
+  body{
+    overflow-x: hidden;
+  }
+  h3 {
+    height: 60px;
+    line-height: 60px;
+    color: antiquewhite;
+    font-size: 1.3rem;
+    background-color: darkslategrey;
+    /* display: inline; */
+    width: 100%;
+  }
+  
+  .Choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .choice img{
+    width: 90px;
+  }
+  
+  .choice {
+    margin-top: 40px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .choice:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+  }
+  
+  .score-borad {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  
+  #User-score,
+  #Comp-score {
+    font-size: 1.2rem;
+  }
+  .msg-container {
+    margin-top: 3rem;
+  }
+  #msg {
+    display: inline;
+    background-color: darkslategrey;
+    color: antiquewhite;
+    padding: 1rem;
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
 }
