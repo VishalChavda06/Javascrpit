@@ -1,0 +1,72 @@
+/* General form styling */
+form {
+  width: 340px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* Placeholder color */
+input::placeholder {
+  color: #aaa;
+}
+
+/* Focus effect */
+input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit button styling */
+input[type="submit"] {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+  background: #0056b3;
+}
+
+/* Error divs (if used for validation messages) */
+#name-error,
+#email-error,
+#pass-error,
+#num-error {
+  position: relative;
+}
+
+
+
+
+.passed{
+  border: 1px solid green;
+}
+
+.err{
+  border: 1px solid red;
+}
