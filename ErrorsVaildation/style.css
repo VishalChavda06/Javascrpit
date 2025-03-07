@@ -162,29 +162,36 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+#name-error {
+  /* border:2px solid black; */
+  height: 80px;
+  margin-top: 20px;
+}
+#fee-error {
+  /* border:2px solid black; */
+  height: 80px;
+  margin-top: 20px;
+}
+#email-error {
+  /* border:2px solid black; */
+  height: 80px;
+  margin-top: 20px;
+}
+#number-error {
+  /* border:2px solid black; */
+  height: 80px;
+  margin-top: 20px;
+}
+#select-error {
+  /* border:2px solid black; */
+  height: 80px;
+  margin-top: 20px;
+}
 
-#name-error{
-    /* border:2px solid black; */
-    height: 80px;
-    margin-top:20px;
+.err {
+  border: 3px solid red;
 }
-#fee-error{
-    /* border:2px solid black; */
-    height: 80px;
-    margin-top:20px;
-}
-#email-error{
-    /* border:2px solid black; */
-    height: 80px;
-    margin-top:20px;
-}
-#number-error{
-    /* border:2px solid black; */
-    height: 80px;
-    margin-top:20px;
-}
-#select-error{
-    /* border:2px solid black; */
-    height: 80px;
-    margin-top:20px;
+
+.passed {
+  border: 3px solid green;
 }
