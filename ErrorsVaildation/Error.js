@@ -51,6 +51,7 @@ const uimaker = () => {
 // input values
 const sell = (e) => {
   e.preventDefault();
+  let nameRegex = /^[a-zA-Z0-9]+$/;
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
   let cousre = document.getElementById("cousre").value;
@@ -59,34 +60,50 @@ const sell = (e) => {
   // console.log(name, email, cousre, fee);
 
   // that is single error show in ux
-  //   if(name.length < 2){
-  //     // alert("enter the vaild name")
-  //     let error = document.createElement("p")
-  //         error.innerHTML = "Enter the vaild Name"
-  //         document.getElementById("name-error").append(error)
-  //     return
-  //   }
+  // if(name.length < 2){
+  //   // alert("enter the vaild name")
+  //   let error = document.createElement("p")
+  //       error.innerHTML = "Enter the vaild Name"
+  //       document.getElementById("name-error").append(error)
+  //   return
+  // }
 
   // that is multipla erorr use the function
-  if (name.length < 2) {
+  if (nameRegex.test(name)) {
+    document.getElementById("name").setAttribute("class", "err");
     ErrorsDetails("name-error", "Enter the vaild Name");
-    return
+    return;
+  } else {
+    document.getElementById("name").setAttribute("class", "passed");
   }
+
   if (email.length < 2) {
+    document.getElementById("email").setAttribute("class", "err");
     ErrorsDetails("email-error", "Enter the vaild Email");
-    return
+    return;
+  } else {
+    document.getElementById("email").setAttribute("class", "passed");
   }
   if (cousre.length < 2) {
+    document.getElementById("cousre").setAttribute("class", "err");
     ErrorsDetails("select-error", "Enter the vaild cousre");
-    return
+    return;
+  } else {
+    document.getElementById("cousre").setAttribute("class", "passed");
   }
   if (fee.length < 2) {
+    document.getElementById("fee").setAttribute("class", "err");
     ErrorsDetails("fee-error", "Enter the vaild fee");
-    return
+    return;
+  } else {
+    document.getElementById("fee").setAttribute("class", "passed");
   }
   if (number.length < 10 || number.length > 10) {
+    document.getElementById("number").setAttribute("class", "err");
     ErrorsDetails("number-error", "Enter the vaild number");
-    return
+    return;
+  } else {
+    document.getElementById("number").setAttribute("class", "passed");
   }
 
   // create a object
