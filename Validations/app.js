@@ -1,22 +1,66 @@
-const getvalue = (id) => {
-  return document.getElementById(id).value;
-};
+const nameinput = document.getElementById("name");
+const emailinput = document.getElementById("email");
+const passwordinput = document.getElementById("password");
+const submitBtn = document.getElementById("submitBtn");
 
-const UserData = (e) => {
-  e.preventDefault();
-  //   let Username = document.getElementById("Username").value;
-  let nameregex = /^(?=.*?[0-9])(?=.*?[A-Za-z]).{8,32}$/
-  let Username = getvalue("Username");
-  let email = getvalue("Email");
-  let pass = getvalue("password");
-  let number = getvalue("number");
-  console.log(Username, email, pass, number);
+const validatename = () => {
+  const name = nameinput.value.trim();
+  const nameerror = document.getElementById("name-error");
 
-  if (nameregex.test(Username)) {
-    document.getElementById("Username").setAttribute("class", "passed");
+  if (name.length < 3) {
+    nameerror.innerHTML = "Name must be at least 3 characters";
+    nameinput.style.border = "2px solid red";
+    return false;
   } else {
-    document.getElementById("Username").setAttribute("class", "err");
-  } 
+    nameerror.innerHTML = "";
+    nameinput.style.border = "2px solid green";
+    return true;
+  }
 };
 
-document.getElementById("UserData").addEventListener("submit", UserData);
+const validateemail = () => {
+  const email = emailinput.value.trim();
+  const emailerror = document.getElementById("email-error");
+
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    emailerror.innerHTML = "Invalid email format";
+    emailinput.style.border = "2px solid red";
+    return false;
+  } else {
+    emailerror.innerHTML = "";
+    emailinput.style.border = "2px solid green";
+    return true;
+  }
+};
+
+const validatepass = () => {
+  // const passregex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+  const password = passwordinput.value.trim();
+  const passworderror = document.getElementById("password-error");
+
+  if (password.length < 6) {
+    passworderror.innerHTML = "Enter valid password";
+    passwordinput.style.border = "2px solid red";
+    return false;
+  } else {
+    passworderror.innerHTML = "";
+    passwordinput.style.border = "2px solid green";
+    return true;
+  }
+};
+
+const validateForm = () => {
+  const isnamevalid = validatename();
+  const isemailvalid = validateemail();
+  const ispassvalid = validatepass();
+  submitBtn.disabled = !(isnamevalid && isemailvalid && ispassvalid);
+};
+
+nameinput.addEventListener("input", validateForm, validatename);
+emailinput.addEventListener("input", validateForm, validateemail);
+passwordinput.addEventListener("input", validateForm, validatepass);
+
+document.getElementById("userdata").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Form submitted successfully!");
+});
