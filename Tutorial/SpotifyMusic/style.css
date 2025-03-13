@@ -226,14 +226,14 @@ nav ul img {
   .name-error {
     position: relative;
     top: 0px;
-    left: 105px;
+    left: 5px;
     padding: 0px 1px;
     color: red;
     font-size: 10px;
   }
   .UsernameInfo input,
   .PasswordInfo input {
-    width: 62%;
+    width: 97%;
     height: 34px;
     outline: none;
     font-size: 1rem;
@@ -243,7 +243,7 @@ nav ul img {
     border: none;
   }
   .PasswordInfo input{
-    margin-left: 8px;  
+    /* margin-left: 8px;   */
   }
 
   #submitBtn {
@@ -255,8 +255,8 @@ nav ul img {
     cursor: not-allowed;
     font-size: 16px;
     height: 40px;
-    width: 290px;
-    margin-top: -8px;
+    width: 300px;
+    margin-top: 10px;
     margin-left: 10px;
   }
 
