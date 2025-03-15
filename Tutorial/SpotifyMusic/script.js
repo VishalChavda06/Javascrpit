@@ -45,5 +45,7 @@ PasswordInput.addEventListener("input", validateForm, validatpass);
 
 document.getElementById("Information").addEventListener("submit", (e) => {
   e.preventDefault();
-  alert("Done");
+  // alert("Done");
+  // change a html page
+  window.location.href = "Homepage.html";
 });
