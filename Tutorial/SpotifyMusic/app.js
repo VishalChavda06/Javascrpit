@@ -6,44 +6,44 @@ let audioElement = new Audio("songs/1.m4a");
 let MasterPlay = document.getElementById("MasterPlay");
 let progressbar = document.getElementById("progressbar");
 let gif = document.getElementById("gif");
-let songList = Array.from(document.getElementsByClassName("songsList"));
+let songItmes = Array.from(document.getElementsByClassName("songs"));
 let song = [
   {
     songname: "Gulabi-Sadi",
     filepath: "songs/1/m4a",
-    coverpath: "Images/Banner-1.jpg",
+    Images: "Images/Banner-1.jpg",
   },
   {
-    songname: "Chhava",
+    songname: "Toofan",
     filepath: "songs/2/m4a",
-    coverpath: "Images/Banner-2.jpg",
+    Images: "Images/Banner-2.jpg",
   },
   {
     songname: "Huwa-Main",
     filepath: "songs/3/m4a",
-    coverpath: "Images/Banner-3.jpg",
+    Images: "Images/Banner-3.jpg",
   },
   {
     songname: "Dil-Tu-Jaan-Tu",
     filepath: "songs/4/m4a",
-    coverpath: "Images/Banner-4.jpg",
+    Images: "Images/Banner-4.jpg",
   },
   {
     songname: "I-Guess",
     filepath: "songs/5/m4a",
-    coverpath: "Images/Banner-5.jpg",
+    Images: "Images/Banner-5.jpg",
   },
   {
     songname: "DIE-WITH-SMILE",
     filepath: "songs/6/m4a",
-    coverpath: "Images/Banner-6.jpg",
+    Images: "Images/Banner-6.jpg",
   },
 ];
 
-songList.forEach((element, i) => {
+songItmes.forEach((element, i) => {
   console.log(element, i);
-  element.getElementsByTagName("img")[0].src = song[i].coverpath;
-  element.getElementsByClassName("songName")[0].innerText = song[i].filepath;
+  element.getElementsByTagName("img")[0].src = song[i].Images;
+  element.getElementsByClassName("songName")[0].innerText = song[i].songname;
 });
 
 // Handle play/paush
@@ -71,3 +71,22 @@ MasterPlay.addEventListener("click", () => {
 // progressbar.addEventListener("change", () => {
 //   audioElement.currentTime = (progressbar.value * audioElement.duration) / 100;
 // });
+
+// playlist song play and pause
+const makeallplay=()=>{
+    Array.from(document.getElementsByClassName("songItmesplays")).forEach((element)=>{
+        element.classList.remove("fa-pause")
+        element.classList.add("fa-play")
+    })
+}
+
+Array.from(document.getElementsByClassName("songItmesplays")).forEach(
+  (element) => {
+      element.addEventListener("clike",(e)=>{
+        makeallplay()
+        index = parseInt(e.target.id)
+      })
+      
+
+  }
+);
