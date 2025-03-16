@@ -59,6 +59,7 @@ MasterPlay.addEventListener("click", () => {
     MasterPlay.classList.add("fa-play");
     gif.style.opacity = 0;
   }
+  // console.log("clike");
 });
 
 // progressbar
@@ -73,20 +74,28 @@ MasterPlay.addEventListener("click", () => {
 // });
 
 // playlist song play and pause
-const makeallplay=()=>{
-    Array.from(document.getElementsByClassName("songItmesplays")).forEach((element)=>{
-        element.classList.remove("fa-pause")
-        element.classList.add("fa-play")
-    })
-}
+const makeallplay = () => {
+  Array.from(document.getElementsByClassName("songItmesplays")).forEach(
+    (element) => {
+      element.classList.remove("fa-pause");
+      element.classList.add("fa-play");
+    }
+  );
+};
 
-Array.from(document.getElementsByClassName("songItmesplays")).forEach(
+Array.from(document.getElementsByClassName("songItmesplay")).forEach(
   (element) => {
-      element.addEventListener("clike",(e)=>{
-        makeallplay()
-        index = parseInt(e.target.id)
-      })
-      
-
+    element.addEventListener("clike", (e) => {
+      makeallplay();
+      // index = parseInt(e.target.id);
+      // console.log(index)
+      // e.target.classList.remove("fa-play");
+      // e.target.classList.add("fa-pause");
+      // audioElement.src = `songs${index}.m4a`;
+      // audioElement.play();
+      // MasterPlay.classList.remove("fa-pause");
+      // MasterPlay.classList.add("fa-play");
+      // console.log("cilkeindex")
+    });
   }
 );
