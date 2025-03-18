@@ -1,0 +1,65 @@
+const getvalue = (id) => {
+  return document.getElementById(id).value;
+};
+// make a array ==>
+let Products = JSON.parse(localStorage.getItem("Products")) || [];
+const handleproducts = (e) => {
+  e.preventDefault();
+  // console.log("submited");
+  let Product = {
+    title: getvalue("title"),
+    price: getvalue("price"),
+    img: getvalue("img"),
+    category: getvalue("category"),
+  };
+  Products.push(Product);
+  // localStorage to store Product
+  localStorage.setItem("Products", JSON.stringify(Products));
+  // console.log(Products);
+  Uimaker();
+};
+const Uimaker = () => {
+  document.getElementById("ProductsList").innerHTML = "";
+  Products.map((Product, i) => {
+    let title = document.createElement("p");
+    title.innerHTML = `${Product.title}`;
+    let price = document.createElement("p");
+    price.innerHTML = `₹${Product.price}.00/-`;
+    let img = document.createElement("img");
+    img.src = Product.img;
+    // deleted btn
+    let btn = document.createElement("button");
+    btn.innerHTML = `Deleted Product `;
+    btn.addEventListener("click", () => {
+      Products.splice(i, 1);
+      Uimaker();
+      localStorage.setItem("Products", JSON.stringify(Products));
+    });
+    let category = document.createElement("p");
+    category.innerHTML = Product.category;
+    // Make a Div
+    let div = document.createElement("div");
+    div.append(img, title, price, category, btn);
+    let show = document.createElement("p");
+    show.append(div);
+    document.getElementById("ProductsList").append(show);
+  });
+};
+Uimaker();
+// Sorting Products
+
+const Sorting = (OrderBy) => {
+  if (OrderBy === "lth") {
+    let temp = Products.sort((a, b) => a.price - b.price);
+    // alert("low to high")
+    Uimaker(temp);
+  } else if (OrderBy === "htl") {
+    let temp = Products.sort((a, b) => b.price - a.price);
+    // alert("high to low")
+    Uimaker(temp);
+  }
+};
+
+document.getElementById("lth").addEventListener("click", () => Sorting("lth"));
+document.getElementById("htl").addEventListener("click", () => Sorting("htl"));
+document.getElementById("Products").addEventListener("submit", handleproducts);
