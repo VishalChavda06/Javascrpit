@@ -3,6 +3,9 @@ const getvalue = (id) => {
 };
 // make a array ==>
 let Products = JSON.parse(localStorage.getItem("Products")) || [];
+
+// Make a LikeButtons array ==>
+let Like = JSON.parse(localStorage.getItem("Like")) || [];
 const handleproducts = (e) => {
   e.preventDefault();
   // console.log("submited");
@@ -11,6 +14,7 @@ const handleproducts = (e) => {
     price: getvalue("price"),
     img: getvalue("img"),
     category: getvalue("category"),
+    id: Date.now(),
   };
   Products.push(Product);
   // localStorage to store Product
@@ -35,11 +39,19 @@ const Uimaker = (Products) => {
       Uimaker(Products);
       localStorage.setItem("Products", JSON.stringify(Products));
     });
+    // LikeButtons ==>
+    let LikeButtons = document.createElement("icon");
+    LikeButtons.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+    LikeButtons.style.paddingLeft = "25px ";
+    LikeButtons.addEventListener("click", () => {
+      Like.push(Product);
+      localStorage.setItem("Like", JSON.stringify(Like));
+    });
     let category = document.createElement("p");
     category.innerHTML = Product.category;
     // Make a Div
     let div = document.createElement("div");
-    div.append(img, title, price, category, btn);
+    div.append(img, title, price, category, btn, LikeButtons);
     let show = document.createElement("p");
     show.append(div);
     document.getElementById("ProductsList").append(show);
@@ -60,7 +72,6 @@ const Sorting = (OrderBy) => {
 };
 
 // filter categorys
-
 const FilterCategory = (category) => {
   if (category == "All") {
     Uimaker(Products);
@@ -70,7 +81,20 @@ const FilterCategory = (category) => {
   console.log(temp);
   Uimaker(temp);
 };
+// sreaching Products
 
+const serach = (value) => {
+  let temp = Products.filter((ele) =>
+    ele.title.toLowerCase().includes(value.toLowerCase())
+  );
+  // console.log(temp);
+  Uimaker(temp);
+};
+
+document.getElementById("search").addEventListener("input", () => {
+  let value = getvalue("search");
+  serach(value);
+});
 document
   .getElementById("Kids")
   .addEventListener("click", () => FilterCategory("Kids"));
