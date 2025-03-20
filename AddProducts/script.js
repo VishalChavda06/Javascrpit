@@ -16,9 +16,9 @@ const handleproducts = (e) => {
   // localStorage to store Product
   localStorage.setItem("Products", JSON.stringify(Products));
   // console.log(Products);
-  Uimaker();
+  Uimaker(Products);
 };
-const Uimaker = () => {
+const Uimaker = (Products) => {
   document.getElementById("ProductsList").innerHTML = "";
   Products.map((Product, i) => {
     let title = document.createElement("p");
@@ -32,7 +32,7 @@ const Uimaker = () => {
     btn.innerHTML = `Deleted Product `;
     btn.addEventListener("click", () => {
       Products.splice(i, 1);
-      Uimaker();
+      Uimaker(Products);
       localStorage.setItem("Products", JSON.stringify(Products));
     });
     let category = document.createElement("p");
@@ -45,9 +45,8 @@ const Uimaker = () => {
     document.getElementById("ProductsList").append(show);
   });
 };
-Uimaker();
+Uimaker(Products);
 // Sorting Products
-
 const Sorting = (OrderBy) => {
   if (OrderBy === "lth") {
     let temp = Products.sort((a, b) => a.price - b.price);
@@ -60,6 +59,30 @@ const Sorting = (OrderBy) => {
   }
 };
 
+// filter categorys
+
+const FilterCategory = (category) => {
+  if (category == "All") {
+    Uimaker(Products);
+    return;
+  }
+  let temp = Products.filter((ele) => ele.category == category);
+  console.log(temp);
+  Uimaker(temp);
+};
+
+document
+  .getElementById("Kids")
+  .addEventListener("click", () => FilterCategory("Kids"));
+document
+  .getElementById("men")
+  .addEventListener("click", () => FilterCategory("Men"));
+document
+  .getElementById("Women")
+  .addEventListener("click", () => FilterCategory("Women"));
+document
+  .getElementById("All")
+  .addEventListener("click", () => FilterCategory("All"));
 document.getElementById("lth").addEventListener("click", () => Sorting("lth"));
 document.getElementById("htl").addEventListener("click", () => Sorting("htl"));
 document.getElementById("Products").addEventListener("submit", handleproducts);
