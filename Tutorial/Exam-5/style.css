@@ -1,0 +1,90 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  height: 67px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #FDFAF6;
+}
+
+.buttons button{
+  width: 150px;
+  height: 60px;
+  margin-right: 20px;
+  padding: 15px 20px;
+  background-color: transparent;
+  border: 1px solid #5F99AE;
+}
+
+.buttons button:hover{
+  background-color: #5F99AE;
+  color: #FDFAF6;
+}
+
+.buttons a{
+  text-decoration: none;
+  font-size: 1rem;
+  /* color: #FDFAF6; */
+  color: #5F99AE ;
+}
+
+.buttons a:hover{
+  color: #FDFAF6;
+  padding: 20px 5px;
+}
+
+.container {
+  border: 2px solid black;
+  display: flex;
+  gap: 10px;
+}
+.container .left {
+  border: 2px solid red;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  
+}
+.container .right{
+    width: 70%;
+}
+.logo img {
+  width: 250px;
+  object-fit: cover;
+}
+#UIShow {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#UIShow div {
+  width: 350px;
+  border: 2px solid black;
+  text-align: center;
+  padding: 10px 9px;
+}
+
+#UIShow div img {
+  width: 250px;
+  height: 200px;
+}
+
+.category-buttons{
+  border: 2px solid black;
+  padding: 0px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.category-buttons button{
+  padding: 10px;
+}
