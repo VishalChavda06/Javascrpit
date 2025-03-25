@@ -13,7 +13,7 @@ const Uimaker = (HomePageShow) => {
     img.src = ele.img;
     // deleted btn
     let btn = document.createElement("button");
-    btn.innerHTML = `Deleted Product `;
+    btn.innerHTML = `Deleted news `;
     btn.addEventListener("click", () => {
       HomePageShow.splice(i, 1);
       localStorage.setItem("HomePageShow", JSON.stringify(HomePageShow));
