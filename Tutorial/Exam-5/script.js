@@ -16,8 +16,8 @@ const Uimaker = (HomePageShow) => {
     btn.innerHTML = `Deleted news `;
     btn.addEventListener("click", () => {
       HomePageShow.splice(i, 1);
-      localStorage.setItem("HomePageShow", JSON.stringify(HomePageShow));
       Uimaker(HomePageShow);
+      localStorage.setItem("HomePageShow", JSON.stringify(HomePageShow));
     });
     let div = document.createElement("div");
     div.append(img, title, content, category, btn);
