@@ -210,7 +210,7 @@ document
 
 // Add to crat
 const addToCart = (id) => {
-  let product = products.filter((p) => p.id === id);
+  let product = products.find((p) => p.id === id);
   cart.push(product);
   localStorage.setItem("cart", JSON.stringify(cart));
   document.getElementById("cart-count").innerText = cart.length;
