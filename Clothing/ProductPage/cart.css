@@ -13,7 +13,6 @@ h2 {
   color: #444;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -65,68 +64,6 @@ h2 {
   justify-items: center;
 }
 
-.cart-item {
-  background: white;
-  padding: 15px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 280px;
-}
-
-.cart-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.cart-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.cart-item h3 {
-  margin: 10px 0;
-  font-size: 18px;
-}
-
-.cart-item p {
-  font-size: 16px;
-  color: #e63946;
-  font-weight: bold;
-}
-
-.cart-item button {
-  padding: 10px 15px;
-  background: #e63946;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.cart-item button:hover {
-  background: #c72c3b;
-}
-
-.Checkout {
-  position: sticky;
-  padding: 10px 15px;
-  font-size: 1.4rem;
-  background: #5f8b4c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.Checkout:hover {
-  background: #466638;
-}
-
 .btn {
   display: flex;
   justify-content: center;
@@ -137,4 +74,70 @@ h2 {
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+main {
+  margin: 20px auto;
+  width: 80%;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 15px;
+  background: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #218838;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.cart-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.cart-details {
+  flex-grow: 1;
+}
+
+.remove-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
