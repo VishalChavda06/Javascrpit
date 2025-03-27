@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded",  ()=> {
     localStorage.setItem("cart", JSON.stringify(cartItems));
 
     document.querySelectorAll(".remove-btn").forEach((button) => {
-      button.addEventListener("click",  ()=> {
+      button.addEventListener("click", function () {
         let index = this.getAttribute("data-index");
         cartItems.splice(index, 1);
         updateCart();
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded",  ()=> {
 });
 
 document.querySelectorAll(".add-to-cart").forEach((button) => {
-  button.addEventListener("click",  ()=> {
+  button.addEventListener("click", function () {
     let product = {
       name: this.getAttribute("data-name"),
       price: parseFloat(this.getAttribute("data-price")),
