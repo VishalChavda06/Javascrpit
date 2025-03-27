@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded",  ()=> {
                   <button class="remove-btn" data-index="${index}">Remove</button>
               </div>
           `;
-      cartContainer.append(cartItem);
+      cartContainer.appendChild(cartItem);
     });
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded",  ()=> {
       });
     });
   }
+
   updateCart();
 });
 
