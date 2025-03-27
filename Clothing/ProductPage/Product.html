@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closetique | Products</title>
+    <link rel="stylesheet" href="Product.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Closetique</div>
+        <input type="text" class="search-bar" id="search-bar" placeholder="Search for products...">
+        <ul class="nav-links">
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Accessories</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="/Clothing/Login/Log.html">Login</a>
+            <a href="cart.html" class="cart-link">🛒 Cart (<span id="cart-count">0</span>)</a>
+        </div>
+    </nav>
+
+    <!-- Product Categories -->
+    <section class="categories">
+        <h2>Select Category</h2>
+        <button id="All">All</button>
+        <button id="Men">Men</button>
+        <button id="Women">Women</button>
+        <button id="kids">Kids</button>
+        <button id="Accessories">Accessories</button>
+        <!-- prices-btn -->
+        <div class="prices-btn">
+            <button id="lth">Low To High</button>
+            <button id="htl">High To Low</button>
+        </div>
+    </section>
+
+
+
+    <!-- Product Listing -->
+    <section class="product-list">
+        <h2>Our Products</h2>
+        <div id="product-container" class="product-grid">
+            <!-- Products will be loaded dynamically -->
+        </div>
+    </section>
+
+    <script src="Product.js"></script>
+</body>
+
+</html>
