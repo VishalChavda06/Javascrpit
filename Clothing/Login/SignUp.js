@@ -21,13 +21,17 @@ const handleSubmit = (e) => {
   if (IsExist(user.email)) {
     // alert("User Alreday Exist..");
     Alreday.style.display = "inline-block";
+    newuser.style.display = "none";
     return;
   } else {
     Users.push(user);
     localStorage.setItem("Users", JSON.stringify(Users));
     // alert("User Create A SuccessFully..");
     newuser.style.display = "inline-block";
+    Alreday.style.display = "none";
+
     document.getElementById("authForm").reset();
+    window.location.href = "/Clothing/Login/Log.html";
   }
   //   console.log(user);
 };
