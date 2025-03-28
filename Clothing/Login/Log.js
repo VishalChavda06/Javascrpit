@@ -25,8 +25,7 @@ const handleSubmit = (e) => {
     if (userData.user.password == user.password) {
       // alert("Login SuccessFully...");
       SuccessFully.style.display = "inline-block";
-      SuccessFully.style.transition = "all 0.5s ease-in-out";
-      document.getElementById("authForm").reset();
+      window.location.href = "/Clothing/HomePage/Home.html";
     } else {
       // alert("Invalid password");
       passregex.innerHTML = "Invalid Password";
