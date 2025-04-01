@@ -28,13 +28,11 @@ const handleSubmit = (e) => {
     localStorage.setItem("Users", JSON.stringify(Users));
     // alert("User Create A SuccessFully..");
     newuser.style.display = "inline-block";
-    q;
     Alreday.style.display = "none";
-
-    document.getElementById("authForm").reset();
     setTimeout(() => {
       window.location.href = "/Clothing/Login/Log.html";
-    }, 1500);
+    }, 1000);
+    document.getElementById("authForm").reset();
   }
   //   console.log(user);
 };
