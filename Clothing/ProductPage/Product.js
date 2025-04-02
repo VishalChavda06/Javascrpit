@@ -292,7 +292,7 @@ document
   .addEventListener("click", () => handlefilter("Women"));
 document
   .getElementById("kids")
-  .addEventListener("click", () => handlefilter("kids"));
+  .addEventListener("click", () => handlefilter("Kids"));
 document
   .getElementById("Accessories")
   .addEventListener("click", () => handlefilter("Accessories"));
