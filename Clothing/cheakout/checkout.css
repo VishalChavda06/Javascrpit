@@ -1,0 +1,140 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 40px 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Checkout Container */
+.checkout-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Section Headings */
+h2 {
+  grid-column: span 2;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form Sections */
+.address-section,
+.payment-section {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.address-section .box {
+  height: 60px;
+}
+
+#error {
+  color: red;
+  position: relative;
+  bottom: 10px;
+  left: 10px;
+  display: none;
+}
+/* Inputs & Labels */
+input,
+label {
+  display: block;
+  width: 95%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Payment Method */
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Card Payment Fields */
+.card-details {
+  display: none; /* Initially hidden */
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Order Summary */
+.order-summary {
+  grid-column: span 2;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.order-summary ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-summary ul li {
+  background: #f1f1f1;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+/* Place Order Button */
+button {
+  grid-column: span 2;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .checkout-container {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    grid-column: span 1;
+  }
+
+  button {
+    grid-column: span 1;
+  }
+}
