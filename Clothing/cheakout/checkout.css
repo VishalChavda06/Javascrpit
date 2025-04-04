@@ -178,7 +178,7 @@ label {
 button {
   grid-column: span 2;
   padding: 12px;
-  background-color: #28a745;
+  background-color: #A4B465;
   color: white;
   border: none;
   border-radius: 5px;
@@ -187,7 +187,7 @@ button {
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #626F47 ;
 }
 #footer {
   position: fixed;
