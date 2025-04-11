@@ -7,7 +7,7 @@ const shoat = (data) => {
     //     <h2 class="temperature">${data.main.temp}°C</h2>
     //     <p class="description">Partly Cloudy</p>
     // `
-    document.querySelector(".city").innerHTML = `${data.name} , ${data.sys.country}`;
+    document.querySelector(".city").innerHTML = `${data.name}  ${data.sys.country}`;
     document.querySelector(".speed").innerHTML = `💨${data.wind.speed}KM/h`;
     document.querySelector(".description").innerHTML = `${data.weather[0].description}`;
     document.getElementById("container").innerHTML = `${Math.round(data.main.temp)}°C`;
