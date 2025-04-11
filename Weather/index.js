@@ -22,7 +22,7 @@ const getheader = async (citrange) => {
     shoat(res)
 }
 const getWeatherByLocation = async (lat, long) => {
-    let req = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=5e29241d39320db830911f1d7829631b`);
+    let req = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=5e29241d39320db830911f1d7829631b&units=metric`);
     let res = await req.json();
     console.log(res);
 
