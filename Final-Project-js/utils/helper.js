@@ -1,1 +1,0 @@
-export const getvalue = (id) => document.getElementById(id).value;
