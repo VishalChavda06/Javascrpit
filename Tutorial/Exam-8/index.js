@@ -1,4 +1,4 @@
-const Recipe = [
+const recipes = [
     {
         "id": 1,
         "name": "Classic Margherita Pizza",
@@ -850,144 +850,67 @@ const Recipe = [
             "Dinner"
         ]
     },
-]
+];
 
-let temp = "";
-for (let i = 0; i < Recipe.length; i++) {
-    temp += `
-        <div class="recipe-card">
-  <img src="${Recipe[i].image}" alt="Classic Margherita Pizza" class="recipe-image" />
-  <div class="recipe-content">
-    <h2 class="recipe-title">${Recipe[i].name}</h2>
-    <p class="recipe-meta">${Recipe[i].rating}🍽️${Recipe[i].reviewCount}</p>
-    <p><strong>Prep:</strong> ${Recipe[i].prepTimeMinutes} min | <strong>Cook:</strong> ${Recipe[i].cookTimeMinutes} min | <strong>Servings:</strong> ${Recipe[i].servings}</p>
+let recipeData = JSON.parse(localStorage.getItem("recipes")) || recipes;
 
-    <h3>Ingredients</h3>
-    <ul>
-      <li>${Recipe[i].ingredients[0]}</li>
-      <li>${Recipe[i].ingredients[1]}</li>
-      <li>${Recipe[i].ingredients[2]}</li>
-      <li>${Recipe[i].ingredients[3]}</li>
-      <li>${Recipe[i].ingredients[4]}</li>
-      <li>${Recipe[i].ingredients[5]}</li>
-    </ul>
+const recipeList = document.getElementById("recipeList");
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
 
-    <h3>Instructions</h3>
-    <ol>
-      <li>${Recipe[i].instructions[0]}</li>
-      <li>${Recipe[i].instructions[1]}</li>
-      <li>${Recipe[i].instructions[2]}</li>
-      <li>${Recipe[i].instructions[3]}</li>
-      <li>${Recipe[i].instructions[4]}</li>
-      <li>${Recipe[i].instructions[5]}</li>
-    </ol>
-
-    <p class="tags"><span>${Recipe[i].tags[0]}</span> <span>${Recipe[i].tags[1]}</span> <span>${Recipe[i].mealType}</span> <span>🔥 ${Recipe[i].caloriesPerServing} cal/serving</span></p>
-    <button onclick="deleteRecipe(${i})" class="delete-button">🗑️ Delete Recipe</button>
-  </div>
-</div>
-
-    `
-
-}
-
-
-// make a SearchRecpie=>
-const serach = (value) => {
-    let filtered = Recipe.filter((ele) =>
-        ele.name.toLowerCase().includes(value.toLowerCase())
-    );
-
-    let html = "";
-
-    for (let i = 0; i < filtered.length; i++) {
-        html += `
-        <div class="recipe-card">
-          <img src="${filtered[i].image}" alt="${filtered[i].name}" class="recipe-image" />
-          <div class="recipe-content">
-            <h2 class="recipe-title">${filtered[i].name}</h2>
-            <p class="recipe-meta">${filtered[i].rating} 🍽️ ${filtered[i].reviewCount}</p>
-            <p><strong>Prep:</strong> ${filtered[i].prepTimeMinutes} min | <strong>Cook:</strong> ${filtered[i].cookTimeMinutes} min | <strong>Servings:</strong> ${filtered[i].servings}</p>
-
-            <h3>Ingredients</h3>
-            <ul>
-              <li>${filtered[i].ingredients[0]}</li>
-              <li>${filtered[i].ingredients[1]}</li>
-              <li>${filtered[i].ingredients[2]}</li>
-              <li>${filtered[i].ingredients[3]}</li>
-              <li>${filtered[i].ingredients[4]}</li>
-              <li>${filtered[i].ingredients[5]}</li>
-            </ul>
-
-            <h3>Instructions</h3>
-            <ol>
-              <li>${filtered[i].instructions[0]}</li>
-              <li>${filtered[i].instructions[1]}</li>
-              <li>${filtered[i].instructions[2]}</li>
-              <li>${filtered[i].instructions[3]}</li>
-              <li>${filtered[i].instructions[4]}</li>
-              <li>${filtered[i].instructions[5]}</li>
-            </ol>
-
-            <p class="tags"><span>${filtered[i].tags[0]}</span> <span>${filtered[i].tags[1]}</span> <span>${filtered[i].mealType}</span> <span>🔥 ${filtered[i].caloriesPerServing} cal/serving</span></p>
-          </div>
-        </div>
-        `;
+// Render recipes
+function renderRecipes(data) {
+    recipeList.innerHTML = "";
+    if (data.length === 0) {
+        recipeList.innerHTML = "<p>No recipes found.</p>";
+        return;
     }
 
-    document.getElementById("Container").innerHTML = html;
-};
-document.getElementById("Search").addEventListener("input", () => {
-    let value = document.getElementById("Search").value;
-    serach(value);
+    data.forEach(recipe => {
+        const card = document.createElement("div");
+        card.className = "recipe-card";
+
+        card.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.name}">
+      <div class="content">
+        <h3>${recipe.name}</h3>
+        <p><strong>Rating:</strong> ${recipe.rating} ⭐</p>
+        <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+        <p><strong>Difficulty:</strong> ${recipe.difficulty}</p>
+        <p><strong>Servings:</strong> ${recipe.servings}</p>
+        <button class="deleteBtn" onclick="deleteRecipe(${recipe.id})">Delete   <i class="fa-solid fa-trash"></i></button> 
+      </div>
+    `;
+        recipeList.appendChild(card);
+    });
+}
+
+// Delete recipe
+function deleteRecipe(id) {
+    recipeData = recipeData.filter(recipe => recipe.id !== id);
+    localStorage.setItem("recipes", JSON.stringify(recipeData));
+    renderRecipes(recipeData);
+}
+
+// Search
+searchInput.addEventListener("input", function () {
+    const term = this.value.toLowerCase();
+    const filtered = recipeData.filter(r =>
+        r.name.toLowerCase().includes(term) ||
+        r.ingredients.some(i => i.toLowerCase().includes(term))
+    );
+    renderRecipes(filtered);
 });
 
-// Delete recipe =>
-function deleteRecipe(index) {
-    Recipe.splice(index, 1);
-
-    let searchValue = document.getElementById("Search").value;
-    serach(searchValue);
-    for (let i = 0; i < filtered.length; i++) {
-        let recipeIndex = Recipe.indexOf(filtered[i]); // Get the index in the original array
-
-        html += `
-    <div class="recipe-card">
-      <button onclick="deleteRecipe(${recipeIndex})" class="delete-button">🗑️ Delete</button>
-      <img src="${filtered[i].image}" alt="${filtered[i].name}" class="recipe-image" />
-      <div class="recipe-content">
-        <h2 class="recipe-title">${filtered[i].name}</h2>
-        <p class="recipe-meta">${filtered[i].rating} 🍽️ ${filtered[i].reviewCount}</p>
-        <p><strong>Prep:</strong> ${filtered[i].prepTimeMinutes} min | <strong>Cook:</strong> ${filtered[i].cookTimeMinutes} min | <strong>Servings:</strong> ${filtered[i].servings}</p>
-
-        <h3>Ingredients</h3>
-        <ul>
-          <li>${filtered[i].ingredients[0]}</li>
-          <li>${filtered[i].ingredients[1]}</li>
-          <li>${filtered[i].ingredients[2]}</li>
-          <li>${filtered[i].ingredients[3]}</li>
-          <li>${filtered[i].ingredients[4]}</li>
-          <li>${filtered[i].ingredients[5]}</li>
-        </ul>
-
-        <h3>Instructions</h3>
-        <ol>
-          <li>${filtered[i].instructions[0]}</li>
-          <li>${filtered[i].instructions[1]}</li>
-          <li>${filtered[i].instructions[2]}</li>
-          <li>${filtered[i].instructions[3]}</li>
-          <li>${filtered[i].instructions[4]}</li>
-          <li>${filtered[i].instructions[5]}</li>
-        </ol>
-
-        <p class="tags"><span>${filtered[i].tags[0]}</span> <span>${filtered[i].tags[1]}</span> <span>${filtered[i].mealType}</span> <span>🔥 ${filtered[i].caloriesPerServing} cal/serving</span></p>
-      </div>
-    </div>
-    `;
+// Sort
+sortSelect.addEventListener("change", function () {
+    let sorted = [...recipeData];
+    if (this.value === "name") {
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (this.value === "rating") {
+        sorted.sort((a, b) => b.rating - a.rating);
     }
-}
+    renderRecipes(sorted);
+});
 
-
-
-
-document.getElementById("Container").innerHTML = temp;
+renderRecipes(recipeData);
